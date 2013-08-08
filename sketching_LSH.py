@@ -440,17 +440,22 @@ def Comp_log():
         
         #print i,"--->",Hashed[i],"--->",count_hash[i]
         #print "i--->",i,"Bucket--->",Hashed[i],"one to many",one_to_many
-    #print "No of Clusters:",Sig_len
-    print "Clusters Number , Log, Signature"
+    print "No of Log",log_len,"No of Clusters:",Sig_len
+    #print "Clusters Number , Log, Signature"
+    print "Write to file initiated....."
     for j in range(Sig_len):
         #print "Cluster--->",j+1
+        f = open(options.path+str(j+1)+ '.log', 'w')
+        print "Cluster--->",j+1
         for i in range(log_len):
             ns=SketchString()
             #ns.getWordText(Log_all[i])
             h1=ns.count_hashmap_Vector(MAX_BITS)
             if (Hashed[i]==j+1):
-                print j+1,",",(Log_all[i]),",",(ns.process(Log_all[i]))
-        print ""
+                #print j+1,",",(Log_all[i]),",",(ns.process(Log_all[i]))
+                f.write(Log_all[i])
+                #print ""
+        f.close()
 
 
 
